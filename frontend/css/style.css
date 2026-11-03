@@ -1,0 +1,330 @@
+/* ==================== Design tokens ==================== */
+:root {
+    --color-bg: #fbf6e9;
+    --color-surface: #f3ead3;
+    --color-card: #ffffff;
+    --color-card-raised: #fff8e7;
+    --color-gold: #7a5806;
+    --color-gold-bright: #856007;
+    --color-gold-dark: #b8860b;
+    --color-red: #b91c1c;
+    --color-green: #15803d;
+    --color-blue: #1d4ed8;
+    --color-text: #2b2416;
+    --color-text-muted: #6b5d3f;
+    --color-border: rgba(154, 111, 8, 0.28);
+    --color-pink: #ec4899;
+    --color-pink-dark: #be185d;
+    --color-glow: rgba(212, 175, 55, 0.35);
+    --shadow-card: 0 16px 48px rgba(120, 90, 20, 0.14);
+    --color-on-gold: #2b1d05;
+    --gradient-gold: linear-gradient(135deg, #fcd34d 0%, #e9be4a 50%, #d4a017 100%);
+
+    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-body: 'Inter', 'Segoe UI', Arial, sans-serif;
+
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --transition-base: 200ms ease;
+}
+
+/* ==================== Reset ==================== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+[hidden] {
+    display: none;
+}
+
+html {
+    color-scheme: light;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.08) 0%, transparent 40%),
+        var(--color-bg);
+    background-attachment: fixed;
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--font-heading);
+    line-height: 1.25;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+:focus-visible {
+    outline: 2px solid var(--color-gold-bright);
+    outline-offset: 2px;
+}
+
+/* ==================== Nền sao lấp lánh ==================== */
+body::before,
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    animation: twinkle 5s ease-in-out infinite alternate;
+}
+
+body::before {
+    background-image:
+        radial-gradient(1px 1px at 12% 18%, var(--color-gold), transparent),
+        radial-gradient(1px 1px at 28% 72%, var(--color-gold), transparent),
+        radial-gradient(1.5px 1.5px at 44% 32%, var(--color-gold), transparent),
+        radial-gradient(1px 1px at 63% 84%, var(--color-gold), transparent),
+        radial-gradient(1px 1px at 78% 22%, var(--color-gold), transparent),
+        radial-gradient(1.5px 1.5px at 91% 58%, var(--color-gold), transparent);
+    background-size: 420px 420px;
+}
+
+body::after {
+    background-image:
+        radial-gradient(1px 1px at 7% 48%, var(--color-gold), transparent),
+        radial-gradient(1.5px 1.5px at 34% 12%, var(--color-gold), transparent),
+        radial-gradient(1px 1px at 52% 62%, var(--color-gold-bright), transparent),
+        radial-gradient(1px 1px at 71% 38%, var(--color-gold), transparent),
+        radial-gradient(1px 1px at 86% 91%, var(--color-gold), transparent);
+    background-size: 560px 560px;
+    animation-delay: 2.5s;
+}
+
+@keyframes twinkle {
+    from { opacity: 0.25; }
+    to { opacity: 0.8; }
+}
+
+/* ==================== Nút bấm ==================== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 10px 20px;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform var(--transition-base), box-shadow var(--transition-base),
+        border-color var(--transition-base), color var(--transition-base);
+}
+
+.btn--primary {
+    position: relative;
+    overflow: hidden;
+    min-height: 54px;
+    background: var(--gradient-gold);
+    color: var(--color-on-gold);
+    font-size: 17px;
+    font-weight: 700;
+}
+
+/* Vệt sáng lướt qua nút khi trỏ chuột */
+.btn--primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transform: translateX(-100%);
+    transition: transform 500ms ease;
+}
+
+.btn--primary:hover:not(:disabled)::after {
+    transform: translateX(100%);
+}
+
+.btn--primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(212, 175, 55, 0.5), 0 0 0 1px rgba(212, 175, 55, 0.5);
+}
+
+.btn--ghost {
+    background: transparent;
+    border-color: var(--color-border);
+    color: var(--color-gold);
+}
+
+.btn--ghost:hover:not(:disabled) {
+    background: rgba(212, 175, 55, 0.1);
+    border-color: var(--color-gold-bright);
+    color: var(--color-gold-bright);
+}
+
+.btn--love {
+    background: rgba(236, 72, 153, 0.1);
+    border-color: var(--color-pink);
+    color: var(--color-pink-dark);
+}
+
+.btn--love:hover:not(:disabled) {
+    background: rgba(236, 72, 153, 0.18);
+    box-shadow: 0 8px 24px rgba(236, 72, 153, 0.25);
+}
+
+.btn--block {
+    width: 100%;
+}
+
+.btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+/* ==================== Card ==================== */
+.card {
+    padding: 20px;
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-gold);
+    box-shadow: 0 0 40px rgba(212, 175, 55, 0.15);
+}
+
+/* ==================== Spinner và trạng thái tải ==================== */
+.spinner {
+    width: 44px;
+    height: 44px;
+    border: 4px solid var(--color-border);
+    border-top-color: var(--color-gold);
+    border-radius: 50%;
+    animation: spin 900ms linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.loading-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    background: rgba(251, 246, 233, 0.9);
+    color: var(--color-gold);
+}
+
+.loading-overlay[hidden] {
+    display: none;
+}
+
+.panel-status[hidden] {
+    display: none;
+}
+
+.panel-status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    padding: 56px 16px;
+    color: var(--color-text-muted);
+    text-align: center;
+}
+
+/* ==================== Toast ==================== */
+.toast-container {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 60;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: min(360px, calc(100vw - 32px));
+}
+
+.toast {
+    padding: 12px 16px;
+    background: var(--color-card-raised);
+    border-left: 4px solid var(--color-gold);
+    border-radius: var(--radius-sm);
+    box-shadow: 0 8px 24px rgba(120, 90, 20, 0.2);
+    animation: toast-in 250ms ease;
+}
+
+.toast--success {
+    border-left-color: var(--color-green);
+}
+
+.toast--error {
+    border-left-color: var(--color-red);
+}
+
+@keyframes toast-in {
+    from {
+        opacity: 0;
+        transform: translateX(24px);
+    }
+}
+
+/* ==================== Băng báo mất kết nối server ==================== */
+.server-banner {
+    position: sticky;
+    top: 0;
+    z-index: 45;
+    padding: 12px 16px;
+    background: var(--color-red);
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* ==================== Footer ==================== */
+.site-footer {
+    margin-top: auto;
+    padding: 20px 16px;
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    font-size: 13px;
+    text-align: center;
+}
+
+/* ==================== Giảm chuyển động ==================== */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms;
+        animation-iteration-count: 1;
+        transition-duration: 0.01ms;
+    }
+}

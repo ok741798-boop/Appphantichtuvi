@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lá số của bạn - TuVi Analyzer</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☯</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/chart.css">
+</head>
+<body>
+    <main class="result" id="result-page">
+        <header class="result__header">
+            <a class="btn btn--ghost" href="index.html">← Lập lá số mới</a>
+            <section class="profile" id="profile" aria-label="Thông tin người xem"></section>
+            <div class="result__actions">
+                <a class="btn btn--love" href="marriage.html">💕 Duyên số</a>
+                <button class="btn btn--ghost" id="export-pdf" type="button" disabled>📄 Xuất PDF</button>
+            </div>
+        </header>
+
+        <div class="tabs" role="tablist" aria-label="Nội dung lá số">
+            <button class="tabs__button tabs__button--active" id="tab-chart" type="button" role="tab"
+                    aria-selected="true" aria-controls="panel-chart" data-tab="chart">Lá số</button>
+            <button class="tabs__button" id="tab-current" type="button" role="tab"
+                    aria-selected="false" aria-controls="panel-current" data-tab="current">Hiện tại</button>
+            <button class="tabs__button" id="tab-future" type="button" role="tab"
+                    aria-selected="false" aria-controls="panel-future" data-tab="future">Tương lai</button>
+        </div>
+
+        <section class="tab-panel" id="panel-chart" role="tabpanel" aria-labelledby="tab-chart">
+            <div class="panel-status"><div class="spinner" role="status" aria-label="Đang tải lá số"></div></div>
+        </section>
+        <section class="tab-panel" id="panel-current" role="tabpanel" aria-labelledby="tab-current" hidden></section>
+        <section class="tab-panel" id="panel-future" role="tabpanel" aria-labelledby="tab-future" hidden></section>
+    </main>
+
+    <footer class="site-footer">
+        ⚠️ Kết quả mang tính tham khảo, không thay thế quyết định thực tế.
+        Tử vi chỉ là một góc nhìn, không phải định mệnh.
+    </footer>
+
+    <dialog class="year-modal" id="year-modal" aria-labelledby="year-modal-title">
+        <button class="year-modal__close" id="year-modal-close" type="button" aria-label="Đóng">×</button>
+        <div id="year-modal-body"></div>
+    </dialog>
+
+    <div class="star-tooltip" id="star-tooltip" role="tooltip" hidden></div>
+    <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+    <script src="js/main.js" defer></script>
+    <script src="js/chart.js" defer></script>
+    <script src="js/analysis.js" defer></script>
+    <script src="js/forecast.js" defer></script>
+</body>
+</html>

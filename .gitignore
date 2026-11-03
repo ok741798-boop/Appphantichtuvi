@@ -1,0 +1,14 @@
+# Môi trường ảo và cache Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Cấu hình riêng, có thể chứa API key
+.env
+
+# File hệ thống
+.DS_Store
+Thumbs.db
+desktop.ini

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duyên Số Định Mệnh - TuVi Analyzer</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💕</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/form.css">
+    <link rel="stylesheet" href="css/marriage.css">
+</head>
+<body>
+    <main class="destiny">
+        <nav class="destiny__nav">
+            <a class="btn btn--ghost" href="result.html">← Về lá số</a>
+        </nav>
+
+        <header class="destiny__hero">
+            <div class="destiny__heart" aria-hidden="true">💕</div>
+            <h1 class="destiny__title">Duyên Số Định Mệnh</h1>
+            <p class="destiny__subtitle">Khám phá người bạn đời tương lai của bạn</p>
+        </header>
+
+        <section id="destiny-form" hidden>
+            <form id="birth-form" class="form-card" data-next="marriage.html" novalidate>
+                <div class="field">
+                    <label class="field__label" for="full-name">Họ tên <span class="field__required">*</span></label>
+                    <input class="field__input" id="full-name" name="full_name" type="text" maxlength="100"
+                           autocomplete="name" placeholder="Nguyễn Văn A" required>
+                    <p class="field__error" id="full-name-error"></p>
+                </div>
+
+                <fieldset class="field field--group">
+                    <legend class="field__label">Giới tính <span class="field__required">*</span></legend>
+                    <div class="radio-group">
+                        <label class="radio">
+                            <input type="radio" name="gender" value="Nam" checked>
+                            <span>♂ Nam</span>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="gender" value="Nữ">
+                            <span>♀ Nữ</span>
+                        </label>
+                    </div>
+                    <p class="field__error" id="gender-error"></p>
+                </fieldset>
+
+                <div class="field-row">
+                    <div class="field">
+                        <label class="field__label" for="birth-date">Ngày sinh dương lịch <span class="field__required">*</span></label>
+                        <input class="field__input" id="birth-date" name="birth_date" type="date" min="1900-01-01" required>
+                        <p class="field__error" id="birth-date-error"></p>
+                    </div>
+
+                    <div class="field">
+                        <label class="field__label" for="birth-hour">Giờ sinh <span class="field__required">*</span></label>
+                        <select class="field__input" id="birth-hour" name="hour" required>
+                            <option value="">Chọn giờ sinh</option>
+                            <option value="0">Tý (23h-1h)</option>
+                            <option value="1">Sửu (1h-3h)</option>
+                            <option value="3">Dần (3h-5h)</option>
+                            <option value="5">Mão (5h-7h)</option>
+                            <option value="7">Thìn (7h-9h)</option>
+                            <option value="9">Tỵ (9h-11h)</option>
+                            <option value="11">Ngọ (11h-13h)</option>
+                            <option value="13">Mùi (13h-15h)</option>
+                            <option value="15">Thân (15h-17h)</option>
+                            <option value="17">Dậu (17h-19h)</option>
+                            <option value="19">Tuất (19h-21h)</option>
+                            <option value="21">Hợi (21h-23h)</option>
+                        </select>
+                        <p class="field__error" id="birth-hour-error"></p>
+                    </div>
+                </div>
+
+                <label class="checkbox" id="late-ty-field" hidden>
+                    <input type="checkbox" id="late-ty">
+                    <span>Sinh từ 23h đến 24h (tử vi tính sang ngày hôm sau)</span>
+                </label>
+
+                <div class="field">
+                    <label class="field__label" for="birth-place">Nơi sinh <span class="field__optional">(tùy chọn)</span></label>
+                    <input class="field__input" id="birth-place" name="birth_place" type="text" maxlength="100"
+                           placeholder="Hà Nội">
+                </div>
+
+                <button class="btn btn--primary btn--block" type="submit">💕 Xem duyên số</button>
+            </form>
+        </section>
+
+        <div class="panel-status" id="destiny-status">
+            <div class="spinner" role="status" aria-label="Đang luận giải"></div>
+            <p>Đang luận giải cung Phu Thê...</p>
+        </div>
+
+        <div id="destiny-result" hidden></div>
+
+        <section class="d-card" id="compare-section" hidden>
+            <h2 class="d-card__title">💞 So sánh với người ấy</h2>
+            <p class="d-card__note">Thông tin người ấy chỉ dùng để tính một lần, app không lưu lại.</p>
+            <form class="compare-form" id="compare-form">
+                <div class="field">
+                    <label class="field__label" for="compare-name">Họ tên</label>
+                    <input class="field__input" id="compare-name" type="text" maxlength="100" required>
+                </div>
+                <div class="field-row">
+                    <div class="field">
+                        <label class="field__label" for="compare-gender">Giới tính</label>
+                        <select class="field__input" id="compare-gender">
+                            <option value="Nữ">Nữ</option>
+                            <option value="Nam">Nam</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label class="field__label" for="compare-date">Ngày sinh dương lịch</label>
+                        <input class="field__input" id="compare-date" type="date" min="1900-01-01" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="field__label" for="compare-hour">Giờ sinh</label>
+                    <select class="field__input" id="compare-hour" required></select>
+                </div>
+                <button class="btn btn--love btn--block" id="compare-submit" type="submit">So sánh 2 lá số</button>
+            </form>
+            <div id="compare-result"></div>
+        </section>
+
+        <p class="destiny__note">Điểm số và các mốc thời gian là quy ước của app để tham khảo, không phải xác suất thật.
+            Mọi quyết định về tình cảm và hôn nhân nên dựa trên sự thấu hiểu thực tế giữa hai người.</p>
+    </main>
+
+    <footer class="site-footer">
+        ⚠️ Kết quả mang tính tham khảo, không thay thế quyết định thực tế.
+        Tử vi chỉ là một góc nhìn, không phải định mệnh.
+    </footer>
+
+    <div class="loading-overlay" id="loading-overlay" hidden>
+        <div class="spinner" role="status" aria-label="Đang xử lý"></div>
+        <p>Đang an sao vào 12 cung...</p>
+    </div>
+    <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+    <script src="js/main.js" defer></script>
+    <script src="js/marriage.js" defer></script>
+</body>
+</html>
