@@ -22,6 +22,12 @@ Mở <http://localhost:5057>. Dùng macOS, Linux hoặc Git Bash thì có thể 
 
 Cũng có thể mở thẳng `frontend/index.html` hoặc dùng Live Server (cổng 5500) để chỉnh giao diện. Khi đó trang vẫn hiện đủ CSS, còn việc lập lá số cần backend đang chạy ở `127.0.0.1:5057`.
 
+## Đưa lên mạng (Render)
+
+Kho có sẵn `render.yaml`. Vào <https://render.com>, đăng nhập bằng GitHub, chọn **New > Blueprint**, chọn kho này rồi bấm **Apply**. Render sẽ cấp link dạng `https://appphantichtuvi.onrender.com`.
+
+Gói miễn phí tự "ngủ" khi không ai dùng, lần mở đầu sau đó chờ khoảng 1 phút. Lá số lưu trong bộ nhớ nên mất khi app khởi động lại, trình duyệt sẽ tự lập lại.
+
 ## Cấu hình (không bắt buộc)
 
 App chạy được ngay mà không cần cấu hình. Muốn đổi thiết lập, chép `backend/.env.example` thành `backend/.env`:

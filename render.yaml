@@ -1,0 +1,13 @@
+# Cấu hình đưa app lên Render (render.com): New > Blueprint > chọn kho này.
+services:
+  - type: web
+    name: appphantichtuvi
+    runtime: python
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --workers 1 --threads 4
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.7
