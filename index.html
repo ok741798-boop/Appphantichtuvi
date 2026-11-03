@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TuVi Analyzer - lập lá số tử vi 12 cung và xem vận hạn 10 năm tới.">
+    <title>TuVi Analyzer - Khám phá vận mệnh</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☯</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/form.css">
+</head>
+<body>
+    <main class="home">
+        <header class="hero">
+            <div class="hero__logo" aria-hidden="true">☯</div>
+            <h1 class="hero__title">TuVi Analyzer</h1>
+            <p class="hero__subtitle">Khám phá vận mệnh qua lá số tử vi</p>
+        </header>
+
+        <form id="birth-form" class="form-card" novalidate>
+            <div class="field">
+                <label class="field__label" for="full-name">Họ tên <span class="field__required">*</span></label>
+                <input class="field__input" id="full-name" name="full_name" type="text" maxlength="100"
+                       autocomplete="name" placeholder="Nguyễn Văn A" required>
+                <p class="field__error" id="full-name-error"></p>
+            </div>
+
+            <fieldset class="field field--group">
+                <legend class="field__label">Giới tính <span class="field__required">*</span></legend>
+                <div class="radio-group">
+                    <label class="radio">
+                        <input type="radio" name="gender" value="Nam" checked>
+                        <span>♂ Nam</span>
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="gender" value="Nữ">
+                        <span>♀ Nữ</span>
+                    </label>
+                </div>
+                <p class="field__error" id="gender-error"></p>
+            </fieldset>
+
+            <div class="field-row">
+                <div class="field">
+                    <label class="field__label" for="birth-date">Ngày sinh dương lịch <span class="field__required">*</span></label>
+                    <input class="field__input" id="birth-date" name="birth_date" type="date" min="1900-01-01" required>
+                    <p class="field__error" id="birth-date-error"></p>
+                </div>
+
+                <div class="field">
+                    <label class="field__label" for="birth-hour">Giờ sinh <span class="field__required">*</span></label>
+                    <select class="field__input" id="birth-hour" name="hour" required>
+                        <option value="">Chọn giờ sinh</option>
+                        <option value="0">Tý (23h-1h)</option>
+                        <option value="1">Sửu (1h-3h)</option>
+                        <option value="3">Dần (3h-5h)</option>
+                        <option value="5">Mão (5h-7h)</option>
+                        <option value="7">Thìn (7h-9h)</option>
+                        <option value="9">Tỵ (9h-11h)</option>
+                        <option value="11">Ngọ (11h-13h)</option>
+                        <option value="13">Mùi (13h-15h)</option>
+                        <option value="15">Thân (15h-17h)</option>
+                        <option value="17">Dậu (17h-19h)</option>
+                        <option value="19">Tuất (19h-21h)</option>
+                        <option value="21">Hợi (21h-23h)</option>
+                    </select>
+                    <p class="field__error" id="birth-hour-error"></p>
+                </div>
+            </div>
+
+            <label class="checkbox" id="late-ty-field" hidden>
+                <input type="checkbox" id="late-ty">
+                <span>Sinh từ 23h đến 24h (tử vi tính sang ngày hôm sau)</span>
+            </label>
+
+            <div class="field">
+                <label class="field__label" for="birth-place">Nơi sinh <span class="field__optional">(tùy chọn)</span></label>
+                <input class="field__input" id="birth-place" name="birth_place" type="text" maxlength="100"
+                       placeholder="Hà Nội">
+            </div>
+
+            <button class="btn btn--primary btn--block" id="submit-button" type="submit">🔮 Lập lá số ngay</button>
+        </form>
+
+        <section class="about" aria-labelledby="about-title">
+            <h2 class="about__title" id="about-title">Cách app phân tích lá số</h2>
+            <p class="about__intro">App luận giải bằng bộ quy tắc được lập trình sẵn. Nhờ vậy, cùng một thông tin
+                sinh luôn cho cùng một kết quả, và bạn xem được kết luận dựa trên sao nào, cung nào.</p>
+            <div class="about__grid">
+                <article class="about__card">
+                    <h3>🔭 Xét toàn bộ lá số</h3>
+                    <p>12 cung, 14 chính tinh, 23 phụ tinh, Tứ Hóa, Tuần và Triệt, thay vì chỉ một vài sao nổi bật.</p>
+                </article>
+                <article class="about__card">
+                    <h3>📅 Tính theo từng năm</h3>
+                    <p>Kết hợp đại vận, tiểu hạn, lưu niên và lưu Tứ Hóa cho từng năm, trên 4 mặt: sự nghiệp,
+                        tài lộc, tình cảm, sức khỏe.</p>
+                </article>
+                <article class="about__card">
+                    <h3>⚖️ Áp dụng nhất quán</h3>
+                    <p>Mọi lá số đi qua cùng một bộ quy tắc, không phụ thuộc vào cảm xúc hay trí nhớ của người luận.</p>
+                </article>
+                <article class="about__card">
+                    <h3>🔍 Minh bạch cơ sở</h3>
+                    <p>Lời luận nêu rõ sao và cung đã dùng. Bạn có thể đối chiếu với lá số hoặc hỏi thêm người am hiểu.</p>
+                </article>
+            </div>
+            <p class="about__note">App chưa đủ 108 sao, chưa xét độ miếu, vượng, hãm, và điểm số là thang quy ước
+                của app, không phải xác suất. Giờ sinh tính theo 12 canh giờ. Người luận giải có kinh nghiệm có thể
+                xét những điều app chưa làm được.</p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        ⚠️ Kết quả mang tính tham khảo, không thay thế quyết định thực tế.
+        Tử vi chỉ là một góc nhìn, không phải định mệnh.
+    </footer>
+
+    <div class="loading-overlay" id="loading-overlay" hidden>
+        <div class="spinner" role="status" aria-label="Đang xử lý"></div>
+        <p>Đang an sao vào 12 cung...</p>
+    </div>
+    <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+    <script src="js/pyodide-bridge.js"></script>
+    <script src="js/main.js" defer></script>
+</body>
+</html>

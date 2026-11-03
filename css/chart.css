@@ -1,0 +1,610 @@
+/* ==================== Bố cục trang kết quả ==================== */
+.result {
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 20px 16px 32px;
+}
+
+.result__header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.result__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* ==================== Thông tin người xem ==================== */
+.profile {
+    flex: 1;
+    min-width: 0;
+    text-align: center;
+}
+
+.profile__name {
+    color: var(--color-gold);
+    font-size: clamp(24px, 4vw, 32px);
+}
+
+.profile__meta {
+    color: var(--color-text-muted);
+    font-size: 14px;
+}
+
+/* ==================== Tabs ==================== */
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 24px;
+    padding: 8px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+}
+
+.tabs__button {
+    flex: 0 1 auto;
+    min-height: 44px;
+    padding: 10px 28px;
+    background: none;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    color: var(--color-text-muted);
+    font-weight: 600;
+    cursor: pointer;
+    transition: color var(--transition-base), background var(--transition-base),
+        border-color var(--transition-base);
+}
+
+.tabs__button:hover {
+    background: rgba(212, 175, 55, 0.05);
+    color: var(--color-gold-bright);
+}
+
+.tabs__button--active {
+    background: rgba(212, 175, 55, 0.1);
+    border-color: var(--color-gold);
+    color: var(--color-gold);
+}
+
+.tab-panel {
+    animation: tab-fade 300ms ease;
+}
+
+@keyframes tab-fade {
+    from { opacity: 0; }
+}
+
+/* ==================== Bảng lá số ==================== */
+.chart-scroll {
+    overflow-x: auto;
+}
+
+.chart-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-auto-rows: minmax(210px, auto);
+    gap: 6px;
+    padding: 8px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card), 0 0 80px rgba(212, 175, 55, 0.1);
+}
+
+.palace {
+    position: relative;
+    grid-row: var(--grid-row);
+    grid-column: var(--grid-column);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+    padding: 10px;
+    background: var(--color-card);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: var(--radius-sm);
+    transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.palace:hover {
+    z-index: 1;
+    border-color: var(--color-gold);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3), inset 0 0 30px rgba(212, 175, 55, 0.05);
+}
+
+.palace--menh {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), var(--color-card));
+    border: 2px solid var(--color-gold);
+}
+
+.palace__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 6px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+.palace__name {
+    color: var(--color-gold);
+    font-family: var(--font-heading);
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.palace__branch {
+    color: var(--color-text-muted);
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.palace__stars {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.palace__stars--main {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.palace__stars--minor {
+    flex: 1;
+    align-content: flex-start;
+    font-size: 12px;
+}
+
+.palace__empty {
+    color: var(--color-text-muted);
+    font-size: 12px;
+    font-style: italic;
+}
+
+.palace__foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4px;
+    color: var(--color-text-muted);
+    font-size: 11px;
+}
+
+.palace__marks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.mark {
+    padding: 0 5px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    color: var(--color-gold);
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.mark--block {
+    border-color: var(--color-red);
+    color: var(--color-red);
+}
+
+/* ==================== Tên sao ==================== */
+.star {
+    padding: 0;
+    background: none;
+    border: 0;
+    font-weight: inherit;
+    text-align: left;
+    cursor: help;
+}
+
+.star:hover {
+    text-decoration: underline;
+}
+
+.star--main {
+    padding: 2px 6px;
+    background: rgba(239, 68, 68, 0.1);
+    border-left: 2px solid var(--color-red);
+    border-radius: 4px;
+    color: var(--color-red);
+}
+
+.star--minor {
+    padding: 1px 5px;
+    background: rgba(96, 165, 250, 0.1);
+    border-radius: 4px;
+    color: var(--color-blue);
+}
+
+.star--hoa {
+    margin-left: 3px;
+    padding: 0 4px;
+    background: var(--gradient-gold);
+    border-radius: 3px;
+    color: var(--color-on-gold);
+    font-size: 10px;
+    font-weight: 700;
+}
+
+/* ==================== Ô trung tâm ==================== */
+.chart-center {
+    grid-row: 2 / 4;
+    grid-column: 2 / 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.12), transparent 70%);
+    text-align: center;
+}
+
+.chart-center__symbol {
+    color: var(--color-gold);
+    font-size: 44px;
+    line-height: 1;
+    filter: drop-shadow(0 0 16px rgba(212, 175, 55, 0.6));
+}
+
+.chart-center__title {
+    color: var(--color-gold);
+    font-size: 22px;
+}
+
+.chart-center__list {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 2px 14px;
+    font-size: 14px;
+    text-align: left;
+}
+
+.chart-center__list dt {
+    color: var(--color-text-muted);
+}
+
+.chart-center__list dd {
+    font-weight: 600;
+}
+
+.chart-legend {
+    margin-top: 12px;
+    color: var(--color-text-muted);
+    font-size: 13px;
+    text-align: center;
+}
+
+/* ==================== Tooltip ==================== */
+.star-tooltip {
+    position: fixed;
+    z-index: 40;
+    max-width: 280px;
+    padding: 10px 12px;
+    background: var(--color-card-raised);
+    border: 1px solid var(--color-gold);
+    border-radius: var(--radius-sm);
+    box-shadow: 0 8px 24px rgba(120, 90, 20, 0.2);
+    font-size: 13px;
+    pointer-events: none;
+}
+
+.star-tooltip__name {
+    color: var(--color-gold);
+    font-weight: 700;
+}
+
+.star-tooltip__meta {
+    color: var(--color-text-muted);
+    font-size: 12px;
+}
+
+/* ==================== Tab Hiện tại ==================== */
+.analysis {
+    display: grid;
+    gap: 16px;
+}
+
+.analysis__summary h2,
+.period-card h2 {
+    margin-bottom: 6px;
+    color: var(--color-gold);
+    font-size: 20px;
+}
+
+.period-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.period-card__value {
+    color: var(--color-gold-bright);
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.period-card__meta {
+    color: var(--color-text-muted);
+    font-size: 14px;
+}
+
+.aspect-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.aspect-card__head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.aspect-card__icon {
+    font-size: 26px;
+}
+
+.aspect-card__title {
+    flex: 1;
+    color: var(--color-gold);
+    font-size: 19px;
+}
+
+.aspect-card__text {
+    font-size: 15px;
+}
+
+.rating {
+    color: var(--color-gold-bright);
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+/* ==================== Tab Tương lai ==================== */
+.timeline-intro {
+    margin-bottom: 14px;
+    color: var(--color-text-muted);
+    font-size: 14px;
+}
+
+.timeline {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.year-card {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+    padding: 16px 14px;
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-top: 4px solid var(--year-color);
+    border-radius: var(--radius-md);
+    color: var(--color-text);
+    text-align: left;
+    cursor: pointer;
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.year-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 40px rgba(212, 175, 55, 0.2);
+}
+
+.year-card--good {
+    --year-color: var(--color-green);
+}
+
+.year-card--mid {
+    --year-color: var(--color-gold);
+}
+
+.year-card--bad {
+    --year-color: var(--color-red);
+}
+
+.year-card__year {
+    color: var(--color-gold);
+    font-family: var(--font-heading);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.year-card__can-chi {
+    color: var(--color-text-muted);
+    font-size: 14px;
+}
+
+.year-card__summary {
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: 13px;
+    line-height: 1.45;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+}
+
+.year-card__verdict {
+    margin-top: auto;
+    padding-top: 6px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.year-card--good .year-card__verdict {
+    color: var(--color-green);
+}
+
+.year-card--mid .year-card__verdict {
+    color: var(--color-gold);
+}
+
+.year-card--bad .year-card__verdict {
+    color: var(--color-red);
+}
+
+/* ==================== Modal chi tiết năm ==================== */
+.year-modal {
+    width: min(720px, calc(100vw - 32px));
+    max-height: calc(100vh - 48px);
+    margin: auto;
+    padding: 24px;
+    background: var(--color-card);
+    border: 1px solid var(--color-gold);
+    border-radius: var(--radius-lg);
+    color: var(--color-text);
+}
+
+.year-modal::backdrop {
+    background: rgba(60, 45, 15, 0.45);
+}
+
+.year-modal__close {
+    float: right;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: 0;
+    color: var(--color-gold);
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.year-modal__title {
+    color: var(--color-gold);
+    font-size: 28px;
+}
+
+.year-modal__meta {
+    margin-bottom: 10px;
+    color: var(--color-text-muted);
+    font-size: 14px;
+}
+
+.year-modal__aspect {
+    margin-top: 16px;
+}
+
+.year-modal__aspect-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 4px;
+}
+
+.year-modal__aspect h3 {
+    color: var(--color-gold);
+    font-size: 17px;
+}
+
+.year-modal__text {
+    font-size: 15px;
+}
+
+/* ==================== Tablet: 768-1024px ==================== */
+@media (max-width: 1024px) {
+    .chart-grid {
+        grid-auto-rows: minmax(170px, auto);
+    }
+
+    .palace {
+        padding: 7px;
+    }
+
+    .palace__name {
+        font-size: 14px;
+    }
+
+    .palace__stars--main {
+        font-size: 12px;
+    }
+
+    .palace__stars--minor {
+        font-size: 11px;
+    }
+
+    .chart-center__list {
+        font-size: 13px;
+    }
+
+    .timeline {
+        grid-template-columns: repeat(5, 170px);
+        overflow-x: auto;
+        padding-bottom: 8px;
+    }
+}
+
+/* ==================== Mobile: dưới 768px ==================== */
+@media (max-width: 767px) {
+    .profile {
+        flex-basis: 100%;
+        order: 3;
+    }
+
+    .chart-grid {
+        grid-template-columns: repeat(2, minmax(132px, 1fr));
+        grid-auto-rows: auto;
+    }
+
+    .palace {
+        grid-row: auto;
+        grid-column: auto;
+        min-height: 170px;
+    }
+
+    .chart-center {
+        order: -1;
+        grid-row: auto;
+        grid-column: 1 / -1;
+    }
+
+    .tabs__button {
+        flex: 1;
+        padding: 10px 8px;
+    }
+
+    .period-grid,
+    .aspect-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .timeline {
+        grid-template-columns: none;
+        grid-auto-flow: column;
+        grid-auto-columns: 72%;
+        margin-right: -16px;
+        padding-right: 16px;
+        scroll-snap-type: x mandatory;
+    }
+
+    .year-card {
+        scroll-snap-align: start;
+    }
+
+    .year-modal {
+        padding: 18px 16px;
+    }
+}

@@ -1,0 +1,19 @@
+{
+  "modules": [
+    "ai_narrator.py",
+    "app.py",
+    "calendar_utils.py",
+    "chart_builder.py",
+    "destiny_predictor.py",
+    "forecast.py",
+    "interpreter.py",
+    "marriage_analyzer.py",
+    "marriage_templates.py",
+    "pdf_report.py",
+    "stars_data.py"
+  ],
+  "fonts": [
+    "DejaVuSans.ttf",
+    "DejaVuSans-Bold.ttf"
+  ]
+}
