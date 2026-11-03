@@ -9,6 +9,9 @@ const LIVE_SERVER_PORT = '5500';
 const OPENED_WITHOUT_FLASK = window.location.protocol === 'file:' || window.location.port === LIVE_SERVER_PORT;
 const API_BASE = OPENED_WITHOUT_FLASK ? 'http://127.0.0.1:5057/api' : '/api';
 const SERVER_CHECK_MS = 3000;
+// Bản đăng trên GitHub Pages chạy Python ngay trong trình duyệt, xem pyodide-bridge.js.
+const BROWSER_PYTHON = window.tuviPython;
+const BROWSER_PYTHON_ERROR = 'Không tải được bộ tính lá số. Hãy kiểm tra kết nối mạng rồi tải lại trang.';
 const SERVER_DOWN_MESSAGE = 'Chưa kết nối được máy chủ. Hãy bấm đúp file run.bat trong thư mục tuvi-analyzer '
     + 'và giữ cửa sổ đó mở. Trang sẽ tự kết nối lại.';
 
@@ -35,9 +38,11 @@ function showToast(message, type = 'info') {
 async function apiRequest(path, options = {}) {
     let response;
     try {
-        response = await fetch(`${API_BASE}${path}`, options);
+        response = await (BROWSER_PYTHON
+            ? BROWSER_PYTHON.fetch(path, options)
+            : fetch(`${API_BASE}${path}`, options));
     } catch {
-        throw new Error(SERVER_DOWN_MESSAGE);
+        throw new Error(BROWSER_PYTHON ? BROWSER_PYTHON_ERROR : SERVER_DOWN_MESSAGE);
     }
     if (response.ok) {
         return response;
@@ -60,7 +65,8 @@ async function isServerOnline() {
 
 /** Server tắt thì hiện băng hướng dẫn và hỏi lại định kỳ; có lại thì ẩn băng. */
 async function watchServer() {
-    if (await isServerOnline()) {
+    // Không có server riêng thì không cần báo; lỗi tải Pyodide hiện qua thông báo của từng request.
+    if (BROWSER_PYTHON || await isServerOnline()) {
         return;
     }
     const banner = document.createElement('div');

@@ -22,6 +22,10 @@ Mở <http://localhost:5057>. Dùng macOS, Linux hoặc Git Bash thì có thể 
 
 Cũng có thể mở thẳng `frontend/index.html` hoặc dùng Live Server (cổng 5500) để chỉnh giao diện. Khi đó trang vẫn hiện đủ CSS, còn việc lập lá số cần backend đang chạy ở `127.0.0.1:5057`.
 
+## Bản chạy trên trình duyệt (GitHub Pages)
+
+Chạy `tools/build_pages.py` rồi đưa thư mục `_site` lên nhánh `gh-pages` để đăng bản tĩnh tại <https://ok741798-boop.github.io/Appphantichtuvi/>. Bản này chạy chính mã Python của backend ngay trong trình duyệt bằng Pyodide (`frontend/js/pyodide-bridge.js`), không cần server. Lần mở đầu tải khoảng 10 giây; lời luận AI tắt.
+
 ## Đưa lên mạng (Render)
 
 Kho có sẵn `render.yaml`. Vào <https://render.com>, đăng nhập bằng GitHub, chọn **New > Blueprint**, chọn kho này rồi bấm **Apply**. Render sẽ cấp link dạng `https://appphantichtuvi.onrender.com`.

@@ -12,3 +12,6 @@ __pycache__/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Bản tĩnh tạo bởi tools/build_pages.py
+_site/
